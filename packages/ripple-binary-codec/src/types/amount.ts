@@ -233,11 +233,12 @@ class Amount extends SerializedType {
    * @returns a string of the object without a decimal
    */
   private static verifyNoDecimal(decimal: Decimal): void {
+    console.log(decimal.e)
     const integerNumberString = decimal
       .times(`1e${-(decimal.e - 15)}`)
       .abs()
       .toString()
-
+    console.log(integerNumberString)
     if (integerNumberString.indexOf('.') !== -1) {
       throw new Error('Decimal place found in integerNumberString')
     }
